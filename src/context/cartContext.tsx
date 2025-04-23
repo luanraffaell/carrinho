@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useState } from 'react'
+import { ProductsProps } from '../pages/home';
 interface CartContextData {
     cart: CartProps[];
     cartAmount: number;
@@ -25,7 +26,7 @@ function CartProvider({ children }: CartProviderProps) {
     const [cart, setCart] = useState<CartProps[]>([])
     const [total,setTotal] = useState("")
 
-    function addItemCart(newItem: CartProps) {
+    function addItemCart(newItem: ProductsProps | CartProps) {
         const indexItem = cart.findIndex(item => item.id === newItem.id)
 
         if (indexItem !== -1) {
